@@ -1,0 +1,76 @@
+.confirm__inner {
+    padding-bottom: 200px;
+}
+.confirm-title {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.table-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+    overflow-wrap: break-word;
+    border-collapse: collapse;
+    thead {
+        th {
+            font-size: 18px;
+            font-weight: 400;
+            text-align: left;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #d9d9d9;
+            // margin-bottom: 20px;
+            &.price {
+                text-align: right;
+            }
+            &.amount {
+                text-align: center;
+            }
+        }
+    }
+    td {
+        padding: 20px 0px;
+        &.price {
+            text-align: right;
+        }
+        &.amount {
+            text-align: center;
+        }
+    }
+}
+
+.user-table {
+    margin-bottom: 30px;
+}
+
+.order-table {
+    margin-bottom: 30px;
+}
+
+.order-amount {
+    font-size: 24px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.order-controls {
+    width: 100%;
+    .controls {
+        display: flex;
+        width: 50%;
+        .order-confirm {
+            padding: 15px 20px;
+            margin-left: 50px;
+        }
+    }
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

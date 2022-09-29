@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+.container {
+    max-width: 1250px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.btn {
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #242424;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #ffd029;
+
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+        background-color: #242424;
+        color: #fff;
+    }
+}
+
+.secondary-btn {
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #242424;
+    // width: 100%;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    border-bottom: 1px solid #242424;
+    position: relative;
+    // &::after {
+    //     content: "";
+    //     position: absolute;
+    //     left: 0;
+    //     bottom: 0;
+    //     width: 100%;
+    //     h
+    // }
+    &:hover {
+        color: #6c6c6c;
+        border-bottom: 1px solid #6c6c6c;
+    }
+}

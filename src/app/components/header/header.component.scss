@@ -1,0 +1,36 @@
+header {
+    padding: 30px 0px;
+}
+.header__inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo {
+    font-weight: 700;
+    font-size: 36px;
+    cursor: pointer;
+    user-select: none;
+    span {
+        color: #ffd029;
+    }
+}
+
+.header-number {
+    font-weight: 700;
+    font-size: 24px;
+    margin-right: 80px;
+}
+
+.header-contacts {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header-cart {
+    display: flex;
+    cursor: pointer;
+}

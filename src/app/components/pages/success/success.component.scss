@@ -1,0 +1,39 @@
+.success__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 200px 0px;
+}
+.success-card {
+    padding: 70px 65px;
+    border: 1px solid #ffd029;
+    border-radius: 6px;
+}
+.card-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.card-subtitle {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    span {
+        font-weight: 700;
+    }
+}
+
+.card-info {
+    margin-bottom: 35px;
+    font-size: 24px;
+}
+
+.success-btn {
+    font-size: 24px;
+}
+
+.card-controls {
+    text-align: right;
+}
