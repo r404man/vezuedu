@@ -37,3 +37,20 @@
 .card-controls {
     text-align: right;
 }
+
+@media (min-width: 300px) and (max-width: 600px) {
+    .card-title,
+    .card-subtitle,
+    .card-info {
+        font-size: 20px;
+    }
+    .card-subtitle {
+        margin-bottom: 15px;
+    }
+    .success-card {
+        padding: 30px 25px;
+    }
+    .success-btn {
+        font-size: 20px;
+    }
+}

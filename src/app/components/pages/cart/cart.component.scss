@@ -70,3 +70,43 @@ table {
 .form-container {
     width: 30%;
 }
+
+@media (min-width: 300px) and (max-width: 600px) {
+    .form-container {
+        width: 100%;
+    }
+    .cart-title {
+        font-size: 20px;
+    }
+    th,
+    td {
+        font-size: 16px;
+    }
+    .table-amount {
+        font-size: 20px;
+        padding-bottom: 15px;
+    }
+    .cart-table {
+        margin-bottom: 25px;
+        overflow-x: auto;
+    }
+
+    th {
+        width: 120px;
+        &.table-refresh {
+            width: 50px;
+        }
+        &.product-name {
+            width: 190px;
+        }
+    }
+    .table-controls {
+        width: 100%;
+        justify-content: space-between;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .counts-control {
+        margin: 0px;
+    }
+}

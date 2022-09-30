@@ -54,3 +54,11 @@ body {
         border-bottom: 1px solid #6c6c6c;
     }
 }
+
+@media (min-width: 300px) and (max-width: 600px) {
+    .container {
+        max-width: 320px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}

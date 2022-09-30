@@ -7,3 +7,10 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 1.875rem;
 }
+
+@media (min-width: 300px) and (max-width: 600px) {
+    .card-list {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 0.9rem;
+    }
+}

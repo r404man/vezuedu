@@ -74,3 +74,43 @@ table {
     flex-direction: row;
     align-items: center;
 }
+
+@media (min-width: 300px) and (max-width: 600px) {
+    .confirm-title,
+    .table-title,
+    .order-amount {
+        font-size: 20px;
+    }
+
+    .confirm-title {
+        margin-bottom: 20px;
+    }
+
+    .order-amount {
+        padding-bottom: 15px;
+    }
+    .order-controls {
+        justify-content: start;
+        .controls {
+            width: 100%;
+        }
+    }
+    .confirm__inner {
+        padding-bottom: 100px;
+    }
+    .user-table {
+        overflow-x: auto;
+        table {
+            overflow-x: auto;
+            th {
+                width: 150px;
+            }
+        }
+    }
+    table {
+        th,
+        td {
+            font-size: 16px !important;
+        }
+    }
+}
