@@ -31,7 +31,7 @@ export class InvoiceService {
         name: invoice.name,
         phone: invoice.phone,
         address: invoice.address!,
-        delivery_at: 'none',
+        deliver_at: 'none',
         order_contents_attributes: [...product],
       },
     };
@@ -39,7 +39,7 @@ export class InvoiceService {
     if (invoice.date!.length !== 0 && invoice.time!.length !== 0) {
       var dateobj = new Date(`${invoice.date!}, ${invoice.time!}`);
       var timeISO = dateobj.toISOString();
-      body.order.delivery_at = timeISO;
+      body.order.deliver_at = timeISO;
     }
 
     // console.log(body);
