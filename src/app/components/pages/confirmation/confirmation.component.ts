@@ -52,8 +52,13 @@ export class ConfirmationComponent implements OnInit {
       price: this.price,
       cart: this.products,
     };
-    this.cartService.sendInvoice(this.invoice).subscribe((response) => {
-      if (response) this.router.navigateByUrl('/success');
+    this.cartService.sendInvoice(this.invoice).subscribe({
+      next: (data) => {
+        this.router.navigateByUrl('/success');
+      },
+      error: (error) => {
+        this.router.navigateByUrl('/');
+      },
     });
   }
 

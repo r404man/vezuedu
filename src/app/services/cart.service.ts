@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Product from '../interfaces/Product';
 import { Invoice } from '../interfaces/Invoice';
 
@@ -11,15 +11,15 @@ export class CartService {
   cart?: Product[] = [];
   cartAmount = new BehaviorSubject<number>(0);
   cartProduct = new BehaviorSubject<Product[]>([]);
-  cartPriceAmount = new BehaviorSubject<number>(0);
-  mailApi = '/mail/vezuedu/post';
+  cartPriceAmount = new BehaviorSubject<number>(1);
+  apiUrl = '/api/orders';
   constructor(private http: HttpClient) {}
 
   getCartPriceAmount() {
     this.cartProduct.subscribe((data: Product[]) => {
       let sum = 0;
       data.map((item: Product) => {
-        sum += item.price;
+        sum += Number(item.price);
       });
       this.cartPriceAmount.next(sum);
     });
@@ -42,14 +42,23 @@ export class CartService {
     let cart = localStorage.getItem('cart');
     if (cart !== null) {
       this.cart = JSON.parse(cart);
-      this.cart?.push(product);
+      this.cart?.push({
+        ...product,
+        amount: 1,
+        startPrice: Number(product.price),
+      });
       localStorage.setItem('cart', JSON.stringify(this.cart));
       this.cartAmount.next(this.cart?.length!);
     } else {
-      this.cart?.push(product);
+      this.cart?.push({
+        ...product,
+        amount: 1,
+        startPrice: Number(product.price),
+      });
       localStorage.setItem('cart', JSON.stringify(this.cart));
     }
   }
+
   removeFromCart(id: number) {
     let cart = JSON.parse(localStorage.getItem('cart')!);
     cart = cart.filter((x: any) => x.id !== id);
@@ -98,23 +107,38 @@ export class CartService {
   }
 
   sendInvoice(invoice: Invoice) {
-    return this.http
-      .post(this.mailApi, invoice, {
-        responseType: 'text',
-      })
-      .pipe(
-        map(
-          (response) => {
-            if (response) {
-              return response;
-            } else {
-              return null;
-            }
-          },
-          (error: any) => {
-            return error;
-          }
-        )
-      );
+    let product = invoice.cart.map((prod) => ({
+      product_id: prod.id,
+      count: prod.amount,
+    }));
+
+    const body = {
+      order: {
+        name: invoice.name,
+        phone: invoice.phone,
+        adress: invoice.adress,
+        order_content_attributes: [...product],
+      },
+    };
+
+    // console.log(this.apiUrl, body);
+    // const body = {
+    //   order: {
+    //     name: 'test-order',
+    //     phone: 'test phone',
+    //     address: 'some address',
+    //     order_contents_attributes: [
+    //       {
+    //         product_id: 1,
+    //         count: 10,
+    //       },
+    //       {
+    //         product_id: 2,
+    //         count: 20,
+    //       },
+    //     ],
+    //   },
+    // };
+    return this.http.post<any>(this.apiUrl, body);
   }
 }

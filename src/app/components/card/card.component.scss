@@ -1,6 +1,9 @@
 .card {
     border-radius: 6px;
     border: 0.7px solid #9c9c9c;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .card-image {
@@ -41,7 +44,11 @@
 }
 
 .card-text {
+    height: 100%;
     padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-title {

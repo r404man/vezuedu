@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartService.getCartAmount().subscribe((amount) => {
-      console.log(amount);
+      // console.log(amount);
       this.cartAmount = amount;
     });
   }

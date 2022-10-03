@@ -1,16 +1,18 @@
 <div *ngIf="product" class="card">
   <div class="card-image">
     <div class="more">
-      <a routerLink="details">Подробнее</a>
+      <a routerLink="/product/{{ product.id }}">Подробнее</a>
     </div>
-    <img src="../../../assets/dishes/2.png" width="200" height="200" alt="" />
+    <img src="{{ product.image }}" width="200" height="200" alt="" />
   </div>
   <div class="card-text">
     <div class="card-title">{{ product.name }}</div>
     <div class="card-details">
       <div class="card-weight card-info">
         <div class="info-title">Масса</div>
-        <div class="info-details">2000 гр / 5 шт</div>
+        <div class="info-details">
+          {{ product.weight }} гр / {{ product.count }} шт
+        </div>
       </div>
       <div class="card-price card-info">
         <div class="info-title">Цена</div>

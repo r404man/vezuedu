@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', component: MainComponent },
   { path: 'success', component: SuccessComponent },
   { path: 'confirmation', component: ConfirmationComponent },
-  { path: 'details', component: DetailsComponent },
+  { path: 'product/:id', component: DetailsComponent },
   { path: 'cart', component: CartComponent },
   { path: '**', component: MainComponent },
 ];
