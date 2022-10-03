@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CallbackService } from 'src/app/services/callback.service';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import User from 'src/app/interfaces/User';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 @Component({
@@ -12,10 +12,29 @@ export class OrderComponent implements OnInit {
   message: any = null;
   allert: any = null;
   isErr: boolean = false;
-  constructor(private formService: CallbackService, private router: Router) {}
+  constructor(
+    private formService: CallbackService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group({
+      name: ['', Validators.required],
+      phone: ['', Validators.required],
+      adress: [''],
+      date: [''],
+      time: [''],
+    });
+  }
+  form: any;
 
-  onClickSubmit(form: NgForm) {
-    let user: User = form.value;
+  get name() {
+    return this.form.get('name');
+  }
+  get phone() {
+    return this.form.get('phone');
+  }
+  onClickSubmit() {
+    let user: User = this.form.value;
     if (user.name.length !== 0 && user.phone.length !== 0) {
       this.formService.setUser(user);
       this.router.navigateByUrl('/confirmation');
@@ -25,5 +44,18 @@ export class OrderComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let user = this.formService.getUser();
+    if (user !== null) {
+      if (user!.name.length !== 0 && user!.phone.length !== 0) {
+        this.form = this.fb.group({
+          name: [`${user?.name}`, Validators.required],
+          phone: [`${user?.phone}`, Validators.required],
+          address: [''],
+          date: [''],
+          time: [''],
+        });
+      }
+    }
+  }
 }

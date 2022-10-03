@@ -42,7 +42,9 @@
         </div>
         <div class="order-controls">
           <div class="controls">
-            <a class="change secondary-btn">Изменить данные</a>
+            <a class="change secondary-btn" (click)="changeData()"
+              >Изменить данные</a
+            >
             <a class="order-confirm btn" (click)="sendInvoice()">Подтвердить</a>
           </div>
         </div>

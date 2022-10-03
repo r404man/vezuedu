@@ -13,7 +13,7 @@ import { OrderComponent } from './components/order/order.component';
 import { ConfirmationComponent } from './components/pages/confirmation/confirmation.component';
 import { SuccessComponent } from './components/pages/success/success.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,13 @@ import { FormsModule } from '@angular/forms';
     ConfirmationComponent,
     SuccessComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

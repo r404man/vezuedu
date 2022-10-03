@@ -12,48 +12,62 @@
       >
         {{ allert }}
       </div>
-      <form action="" #userForm="ngForm" (submit)="onClickSubmit(userForm)">
+      <form action="" [formGroup]="form" (submit)="onClickSubmit()" novalidate>
+        <div *ngIf="!name.valid && (name.dirty || name.touched)">
+          <div
+            [ngClass]="{ isErr: !name.errors.required }"
+            [hidden]="!name.errors.required"
+          ></div>
+          Введите имя
+        </div>
+
         <input
-          [ngClass]="{ isErr: isErr }"
+          [ngClass]="{ isErr: !name.valid && (name.dirty || name.touched) }"
           class="form-input"
           type="text"
-          name="name"
           placeholder="*Ваше имя"
-          required
-          ngModel
+          formControlName="name"
         />
+
+        <div *ngIf="!phone.valid && (phone.dirty || phone.touched)">
+          <div [hidden]="!phone.errors.required">Введите телефон</div>
+        </div>
         <input
-          [ngClass]="{ isErr: isErr }"
+          [ngClass]="{ isErr: !phone.valid && (phone.dirty || phone.touched) }"
           class="form-input"
-          type=""
+          type="text"
           placeholder="*Телефон для связи"
           name="phone"
-          required
-          ngModel
+          formControlName="phone"
         />
         <input
           class="form-input"
           type=""
           placeholder="Адрес доставки"
-          name="adress"
-          ngModel
+          name="address"
+          formControlName="adress"
         />
         <input
           class="form-input"
           type=""
           placeholder="Дата доставки"
           name="date"
-          ngModel
+          formControlName="date"
         />
         <input
           class="form-input"
           type=""
           placeholder="Время доставки"
           name="time"
-          ngModel
+          formControlName="time"
         />
         <div class="form-apply">
-          <input type="submit" value="Оформить заказ" class="btn form-sbmt" />
+          <input
+            type="submit"
+            [disabled]="!form.valid"
+            value="Оформить заказ"
+            class="btn form-sbmt"
+          />
         </div>
       </form>
     </div>

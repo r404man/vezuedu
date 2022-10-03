@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Product from '../interfaces/Product';
-import { Invoice } from '../interfaces/Invoice';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +34,12 @@ export class CartService {
     this.cart = JSON.parse(localStorage.getItem('cart')!);
     this.cartProduct.next(this.cart!);
     return this.cartProduct.asObservable();
+  }
+
+  clearCart() {
+    this.cart = [];
+    localStorage.setItem('cart', '[]');
+    this.cartProduct.next([]);
   }
 
   addToCart(product: Product) {

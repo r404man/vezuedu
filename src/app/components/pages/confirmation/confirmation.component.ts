@@ -44,6 +44,10 @@ export class ConfirmationComponent implements OnInit {
     this.user = this.formService.getUser();
   }
 
+  changeData() {
+    this.router.navigateByUrl('/cart');
+  }
+
   sendInvoice() {
     this.invoice = {
       ...this.user,
@@ -54,6 +58,7 @@ export class ConfirmationComponent implements OnInit {
     this.invoiceService.sendInvoice(this.invoice).subscribe({
       next: ({ status, id }) => {
         this.invoiceService.setInvoiceNumber(id);
+        this.cartService.clearCart();
         this.router.navigateByUrl('/success');
       },
       error: (error) => {

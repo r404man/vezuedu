@@ -43,6 +43,12 @@ form {
         background-color: #242424;
         color: #fff;
     }
+    &:disabled {
+        background-color: #909090;
+        color: #fff;
+        cursor: default;
+        // border: 1px solid #9c9c9c;
+    }
 }
 
 .form-apply {

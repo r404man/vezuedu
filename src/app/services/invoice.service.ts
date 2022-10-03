@@ -8,8 +8,8 @@ import { Invoice } from '../interfaces/Invoice';
 })
 export class InvoiceService {
   invoiceNumber = new BehaviorSubject<number>(1);
-  // apiUrl = '/api/orders';
-  apiUrl = 'http://vezuedu.dev.writex.ru/api/orders';
+  apiUrl = '/api/orders';
+  // apiUrl = 'http://vezuedu.dev.writex.ru/api/orders';
   constructor(private http: HttpClient) {}
 
   setInvoiceNumber(id: number) {
@@ -30,7 +30,7 @@ export class InvoiceService {
       order: {
         name: invoice.name,
         phone: invoice.phone,
-        adress: invoice.adress,
+        address: invoice.adress,
         order_content_attributes: [...product],
       },
     };
