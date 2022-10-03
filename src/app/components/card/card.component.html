@@ -1,4 +1,4 @@
-<div class="card">
+<div *ngIf="product" class="card">
   <div class="card-image">
     <div class="more">
       <a routerLink="details">Подробнее</a>
@@ -6,7 +6,7 @@
     <img src="../../../assets/dishes/2.png" width="200" height="200" alt="" />
   </div>
   <div class="card-text">
-    <div class="card-title">Валованы с рыбным муссом (мусс)</div>
+    <div class="card-title">{{ product.name }}</div>
     <div class="card-details">
       <div class="card-weight card-info">
         <div class="info-title">Масса</div>
@@ -14,11 +14,13 @@
       </div>
       <div class="card-price card-info">
         <div class="info-title">Цена</div>
-        <div class="info-details">39 Br</div>
+        <div class="info-details">{{ product.price }} Br</div>
       </div>
     </div>
     <div class="card-btn">
-      <a class="add-btn btn"> Добавить в корзину </a>
+      <a class="add-btn btn" (click)="addToCart(product)">
+        Добавить в корзину
+      </a>
     </div>
   </div>
 </div>

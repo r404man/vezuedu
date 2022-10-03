@@ -15,11 +15,11 @@
                 <th>Время</th>
               </thead>
               <tr>
-                <td>Константин</td>
-                <td>8 965 421 30 67</td>
-                <td>ул. Мира 12</td>
-                <td>25.09.2022</td>
-                <td>23.00</td>
+                <td>{{ user?.name }}</td>
+                <td>{{ user?.phone }}</td>
+                <td>{{ user?.adress }}</td>
+                <td>{{ user?.date }}</td>
+                <td>{{ user?.time }}</td>
               </tr>
             </table>
           </div>
@@ -31,19 +31,19 @@
                 <th class="amount">Количество</th>
                 <th class="price">Цена</th>
               </thead>
-              <tr>
-                <td>Валованы с рыбным муссом (мусс)</td>
-                <td class="amount">1</td>
-                <td class="price">35 Br</td>
+              <tr *ngFor="let product of products$ | async">
+                <td>{{ product.name }}</td>
+                <td class="amount">{{ product.amount }}</td>
+                <td class="price">{{ product.price }} Br</td>
               </tr>
             </table>
           </div>
-          <div class="order-amount">Итого: 4200 Br</div>
+          <div class="order-amount">Итого: {{ priceAmount$ | async }} Br</div>
         </div>
         <div class="order-controls">
           <div class="controls">
             <a class="change secondary-btn">Изменить данные</a>
-            <a class="order-confirm btn">Подтвердить</a>
+            <a class="order-confirm btn" (click)="sendInvoice()">Подтвердить</a>
           </div>
         </div>
       </div>

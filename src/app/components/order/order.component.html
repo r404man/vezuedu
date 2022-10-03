@@ -5,12 +5,53 @@
       <div class="form-subtitle">
         Поля отмеченные “*” обязательны для заполнения
       </div>
-      <form action="">
-        <input class="form-input" type="" placeholder="*Ваше имя" />
-        <input class="form-input" type="" placeholder="*Телефон для связи" />
-        <input class="form-input" type="" placeholder="Адрес доставки" />
-        <input class="form-input" type="" placeholder="Дата доставки" />
-        <input class="form-input" type="" placeholder="Время доставки" />
+      <div
+        class="callback-allert"
+        *ngIf="allert != null"
+        [ngClass]="{ isErr: isErr }"
+      >
+        {{ allert }}
+      </div>
+      <form action="" #userForm="ngForm" (submit)="onClickSubmit(userForm)">
+        <input
+          [ngClass]="{ isErr: isErr }"
+          class="form-input"
+          type="text"
+          name="name"
+          placeholder="*Ваше имя"
+          required
+          ngModel
+        />
+        <input
+          [ngClass]="{ isErr: isErr }"
+          class="form-input"
+          type=""
+          placeholder="*Телефон для связи"
+          name="phone"
+          required
+          ngModel
+        />
+        <input
+          class="form-input"
+          type=""
+          placeholder="Адрес доставки"
+          name="adress"
+          ngModel
+        />
+        <input
+          class="form-input"
+          type=""
+          placeholder="Дата доставки"
+          name="date"
+          ngModel
+        />
+        <input
+          class="form-input"
+          type=""
+          placeholder="Время доставки"
+          name="time"
+          ngModel
+        />
         <div class="form-apply">
           <input type="submit" value="Оформить заказ" class="btn form-sbmt" />
         </div>

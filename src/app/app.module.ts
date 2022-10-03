@@ -12,6 +12,8 @@ import { MainComponent } from './components/pages/main/main.component';
 import { OrderComponent } from './components/order/order.component';
 import { ConfirmationComponent } from './components/pages/confirmation/confirmation.component';
 import { SuccessComponent } from './components/pages/success/success.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,10 @@ import { SuccessComponent } from './components/pages/success/success.component';
     MainComponent,
     OrderComponent,
     ConfirmationComponent,
-    SuccessComponent
+    SuccessComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
