@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Invoice } from 'src/app/interfaces/Invoice';
 import Product from 'src/app/interfaces/Product';
 import User from 'src/app/interfaces/User';
 import { CallbackService } from 'src/app/services/callback.service';
 import { CartService } from 'src/app/services/cart.service';
+import { InvoiceService } from 'src/app/services/invoice.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -23,7 +23,8 @@ export class ConfirmationComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private formService: CallbackService,
-    private router: Router
+    private router: Router,
+    private invoiceService: InvoiceService
   ) {}
 
   getPrice() {
@@ -44,16 +45,15 @@ export class ConfirmationComponent implements OnInit {
   }
 
   sendInvoice() {
-    let num = Math.round(Math.random() * 1000);
-    localStorage.setItem('invoiceNumber', JSON.stringify(num));
     this.invoice = {
-      number: num,
       ...this.user,
       price: this.price,
       cart: this.products,
     };
-    this.cartService.sendInvoice(this.invoice).subscribe({
-      next: (data) => {
+
+    this.invoiceService.sendInvoice(this.invoice).subscribe({
+      next: ({ status, id }) => {
+        this.invoiceService.setInvoiceNumber(id);
         this.router.navigateByUrl('/success');
       },
       error: (error) => {
