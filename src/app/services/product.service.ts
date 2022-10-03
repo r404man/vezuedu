@@ -6,7 +6,7 @@ import Product from '../interfaces/Product';
   providedIn: 'root',
 })
 export class ProductService {
-  apiUrl: string = 'http://vezuedu.dev.writex.ru/api/products/';
+  apiUrl: string = '/api/products/';
 
   constructor(private http: HttpClient) {}
 
