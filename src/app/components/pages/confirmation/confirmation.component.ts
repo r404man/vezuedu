@@ -42,6 +42,7 @@ export class ConfirmationComponent implements OnInit {
 
   getUser() {
     this.user = this.formService.getUser();
+    // console.log(this.user);
   }
 
   changeData() {

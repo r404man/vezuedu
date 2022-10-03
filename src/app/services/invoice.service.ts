@@ -26,14 +26,23 @@ export class InvoiceService {
       count: prod.amount,
     }));
 
-    const body = {
+    let body = {
       order: {
         name: invoice.name,
         phone: invoice.phone,
-        address: invoice.adress,
-        order_content_attributes: [...product],
+        address: invoice.address!,
+        delivery_at: 'none',
+        order_contents_attributes: [...product],
       },
     };
+
+    if (invoice.date!.length !== 0 && invoice.time!.length !== 0) {
+      var dateobj = new Date(`${invoice.date!}, ${invoice.time!}`);
+      var timeISO = dateobj.toISOString();
+      body.order.delivery_at = timeISO;
+    }
+
+    // console.log(body);
     return this.http.post<any>(this.apiUrl, body);
   }
 }

@@ -20,7 +20,7 @@ export class OrderComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', Validators.required],
       phone: ['', Validators.required],
-      adress: [''],
+      address: [''],
       date: [''],
       time: [''],
     });

@@ -38,8 +38,9 @@ export class CartService {
 
   clearCart() {
     this.cart = [];
-    localStorage.setItem('cart', '[]');
     this.cartProduct.next([]);
+    this.cartAmount.next(0);
+    localStorage.setItem('cart', '[]');
   }
 
   addToCart(product: Product) {
